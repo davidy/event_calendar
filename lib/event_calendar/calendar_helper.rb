@@ -219,17 +219,17 @@ module EventCalendar
                 end
                 if no_bg
                   cal << %(ec-event-no-bg" )
-                  cal << %(style="color: #{event.color}; )
+                  cal << %(style="color: #{event.calendar_color}; )
                 else
                   cal << %(ec-event-bg" )
-                  cal << %(style="background-color: #{event.color}; )
+                  cal << %(style="background-color: #{event.calendar_color}; )
                 end
 
                 cal << %(padding-top: #{options[:event_padding_top]}px; )
                 cal << %(height: #{options[:event_height] - options[:event_padding_top]}px;" )
                 if options[:use_javascript]
                   # custom attributes needed for javascript event highlighting
-                  cal << %(data-event-id="#{event.id}" data-event-class="#{class_name}" data-color="#{event.color}" )
+                  cal << %(data-event-id="#{event.id}" data-event-class="#{class_name}" data-color="#{event.calendar_color}" )
                 end
                 cal << %(>)
 
@@ -243,10 +243,10 @@ module EventCalendar
                 end
 
                 if no_bg
-                  cal << %(<div class="ec-bullet" style="background-color: #{event.color};"></div>)
+                  cal << %(<div class="ec-bullet" style="background-color: #{event.calendar_color};"></div>)
                   # make sure anchor text is the event color
                   # here b/c CSS 'inherit' color doesn't work in all browsers
-                  cal << %(<style type="text/css">.ec-#{class_name}-#{event.id} a { color: #{event.color}; }</style>)
+                  cal << %(<style type="text/css">.ec-#{class_name}-#{event.id} a { color: #{event.calendar_color}; }</style>)
                 end
 
                 if block_given?
